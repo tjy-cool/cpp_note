@@ -14,7 +14,7 @@ $(TARGET) : $(OBJS)
 	ar cr $(TARGET) $(OBJS)
 
 $(OBJS) : $(SRCS)
-	$(shell if [-d $(OBJ_DIR)]; then echo ; else mkdir $(OBJ_DIR); fi;)
+	mkdir -p $(OBJ_DIR)
 	$(CC) -o $(OBJS) -c $(SRCS)
 
 .PHONY : clean all
