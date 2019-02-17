@@ -1,50 +1,6 @@
-CC 		= g++
+CC 			= g++
 CXX_CFLAGS 	= -std=c++11
-TARGET	= TEST
-
-# 动态库路径及动态库
-SLIBDIR = -L../../lib
-SLIB	= -lgtest
-
-
-SUBDIR  = .	\
-		  ./source \
-		  ./testsrc 
-
-INCLDER = 	-I./source	 \
-			-I./testsrc \
-			-I../../include
-
-OBJDIR	= obj/
-CXX_SOURCE  = $(foreach src, $(SUBDIR), $(wildcard $(src)/*.cpp))
-OBJS_TEMP 	= $(patsubst  %.cpp, %.o, $(CXX_SOURCES))
-CXX_OBJECTS = $(addprefix $(OBJDIR), $(notdir $(OBJS_TEMP)))
-DEP_FILES   = $(patsubst  %.o,  %.d, $(CXX_OBJECTS))
-
-# EMPTY:=
-# SPACE:=$(EMPTY) $(EMPTY)
-
-# VPATH_DIRS = $(subst $(SPACE), :, $(SUBDIR))
-# vpath %.cpp $(VPATH_DIRS)
-
-$(TARGET) : $(CXX_OBJECTS)
-	$(CC) $(CFLAGS) $(SLIBDIR) $(SLIB) -o $@ $^
-
-$(CXX_OBJECTS)%.o : %.cpp
-	mkdir -p $(OBJDIR)
-	$(CC) -MMD -c $< $(CFLAGS) $(INCLDER) -o $@
-
--include $(DEP_FILES)
-
-.PHONY : print clean
-print :
-	echo $(SRCS)
-	echo $(OBJS)
-clean :
-	-rm -rf $(OBJDIR)
-	-rm -rf $(TARGET)CC 		= g++
-CXX_CFLAGS 	= -std=c++11
-TARGET	= TEST
+TARGET		= TEST
 
 # 动态库路径及动态库
 SLIBDIR = -L../../lib
