@@ -1,14 +1,16 @@
 #include <iostream>
+#include <unistd.h>
 #include <pthread.h>
 
 using namespace std;
 
-static void* func1()
+static void* func1(void*)
 {
     cout << "in func1" << endl;
     for(int i=0; i<10; ++i)
     {
-        cout << "i: " << i << endl;
+        sleep(1);
+        cout << "in func1 i: " << i << endl;
     }
     return NULL;
 }
@@ -16,7 +18,15 @@ static void* func1()
 int main()
 {
     pthread_t ptid;
-    pthread_create(&ptid, NULL, func1, NULL);
+    cout << "in main" << endl;
 
+    
+    pthread_create(&ptid, NULL, func1, NULL);
+    for(int i=0; i<10; ++i)
+    {
+        sleep(1);
+        cout << "in main i: " << i << endl;
+    }
+    pthread_join(ptid, NULL);
     return 0;
 }
