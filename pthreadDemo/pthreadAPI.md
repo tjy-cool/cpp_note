@@ -23,7 +23,7 @@ int pthread_cancel(pthread_t thread);
 void pthread_exit(void *value_ptr);
 ```
 
-## 互斥锁  pthread_mutex_t
+## 线程互斥 —— 互斥锁 pthread_mutex_t
 
 ```c
 /* 初始化mutex, 此方法为静态初始化方法，静态方法和动态方法只能使用一种 */
@@ -45,7 +45,17 @@ int pthread_mutex_lock(pthread_mutex_t *mutex);
 int pthread_mutex_unlock(pthread_mutex_t *mutex);
 ```
 
-## 条件变量  pthread_cond_t
+- 使用实例
+
+```c
+pthread_mutex_t lock;
+pthread_mutex_init(&lock,NULL);
+pthread_mutex_lock(&lock);
+// 这里是临界区
+pthread_mutex_unlock(&lock);
+```
+
+## 线程同步 —— 条件变量  pthread_cond_t
 
 ```c
 /* 初始化一个条件变量 */
