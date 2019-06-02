@@ -23,10 +23,14 @@
 # Compiled Static libraries
 *.lai
 *.la
-*.a
+#*.a
 *.lib
 
 # Executables
 *.exe
 *.out
 *.app
+*.bin
+*.ipch
+
+*.DS_Store
