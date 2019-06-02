@@ -1,10 +1,7 @@
 CC 			= g++
-CXX_CFLAGS 	= -std=c++11
 TARGET		= TEST
 
-# 动态库路径及动态库
-SLIBDIR = -L../../lib
-SLIB	= -lgtest
+PWD = $(shell pwd)
 
 # 源文件路径
 SUBDIR  = .	\
@@ -16,6 +13,19 @@ INCLDER = 	-I./source	 \
 			-I./testsrc \
 			-I../../include
 
+# 动态库路径及动态库
+SLIBDIR = -L../../lib
+SLIB	= -lgtest
+
+ifdef DEBUG
+CXX_CFLAGS += -g
+endif
+
+CXX_CFLAGS 	+= -std=c++11 $(INCLDER)
+
+#####################################################
+#           以下配置基本不用修改                       #
+#####################################################
 # 搜索所有源文件
 CXX_SOURCES  = $(foreach src, $(SUBDIR), $(wildcard $(src)/*.cpp))
 
@@ -32,12 +42,13 @@ vpath %.cpp $(SUBDIR)
 
 # 生成目标文件 
 $(TARGET) : $(CXX_OBJECTS)
-	$(CC) $(CXX_CFLAGS) $(SLIBDIR) $(SLIB) -o $@ $^
+	$(CC) $(CXX_CFLAGS) -o $@ $^ $(SLIBDIR) $(SLIB)
 
 # 生成object文件
 $(OBJDIR)%.o : %.cpp
 	@mkdir -p $(OBJDIR)
-	$(CC) -MMD -c $< $(CXX_CFLAGS) $(INCLDER) -o $@
+	$(CC) $(CXX_CFLAGS) -c -MMD $< -o $@
+	# $(CC) $(CXX_CFLAGS) -c -MMD -MT $@ -MF $(patsubst %.o, %.d, $@) $< -o $@
 
 # 加入依赖文件
 -include $(DEP_FILES)
