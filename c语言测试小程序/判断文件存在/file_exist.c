@@ -38,7 +38,7 @@
 
 int main()   
 {   
-    if((access("test.c",F_OK))!=-1)   
+    if((access("test.txt",F_OK))!=-1)   
     {   
         printf("文件 test.c 存在.\n");   
     }   
