@@ -18,7 +18,7 @@ $(TARGET) : $(OBJS)
 	
 $(OBJS) : $(SRCS)
 	$(shell if [-d $(OBJDIR)]; then echo ; else mkdir $(OBJDIR); fi;)
-	$(CC) -c $(SRCS) -o $(OBJS)
+	$(CC) -c -g $(SRCS) -o $(OBJS)
 
 # 伪目标
 .PHONY: clean all

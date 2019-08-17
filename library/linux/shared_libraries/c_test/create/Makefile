@@ -18,7 +18,7 @@ $(TARGET) : $(OBJS)
 $(OBJS) : $(SRCS)
 	$(shell if [-d "objs"]; then echo ; else mkdir objs; fi;)
 	# 编译生成目标文件文件(机器代码),只编译不链接
-	$(CC) -c $(SRCS) -o $(OBJS)
+	$(CC) -c -g $(SRCS) -o $(OBJS)
 
 # 伪目标
 .PHONY: clean all

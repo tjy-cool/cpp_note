@@ -61,10 +61,10 @@ int main()
             if(FD_ISSET(sockfd, &rdset))
             {
                 printf("ok\n");
-                recvfrom(sockfd, buf, sizeof(buf), 0, (struct sockaddr *) &fromaddr, &len);
+                //recvfrom(sockfd, buf, sizeof(buf), 0, (struct sockaddr *) &fromaddr, &len);
                 printf("recv_from: %s\n", buf);
 
-                char *str = "send from server.";
+                char *str = "send from server.\n";
                 sendto(sockfd, str, strlen(str), 0, (struct sockaddr *)&fromaddr, sizeof(fromaddr));
             }
         }

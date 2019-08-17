@@ -53,6 +53,7 @@ pthread_mutex_init(&lock,NULL);
 pthread_mutex_lock(&lock);
 // 这里是临界区
 pthread_mutex_unlock(&lock);
+pthread_mutex_destory(&lock);
 ```
 
 ## 线程同步 —— 条件变量  pthread_cond_t
