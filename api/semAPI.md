@@ -1,6 +1,6 @@
 # 信号量
 
-## 
+## 相关操作函数
 
 ```c
 // 头文件
@@ -20,7 +20,7 @@ int sem_destroy(sem_t *sem);
 int sem_wait(sem_t *sem);
 
 // 相当于V操作。释放信号量，让信号量的值加1。
-int sem_post(sem_t *sem); 
+int sem_post(sem_t *sem);
 ```
 
 ## 使用实例
