@@ -1,15 +1,18 @@
-文件的打开操作    
-    
+# 文件相关操作
+
+## 文件的打开操作
+
 ```c
 //fopen 打开一个文件
 FILE * fopen(const char * filename, const char * mode);
 ```
-文件的关闭操作    
-    
-    fclose 关闭一个文件
 
-文件的读写操作    
-    
+## 文件的关闭操作
+
+fclose 关闭一个文件
+
+## 文件的读写操作
+
     fgetc 从文件中读取一个字符
     fputc 写一个字符到文件中去
     fgets 从文件中读取一个字符串
@@ -21,14 +24,14 @@ FILE * fopen(const char * filename, const char * mode);
     getw 以二进制形式读取一个整数
     putw 以二进制形式存贮一个整数
 
-文件状态检查函数   
+## 文件状态检查函数
 
     feof 文件结束
     ferror 文件读/写出错
     clearerr 清除文件错误标志
     ftell 了解文件指针的当前位置
 
-文件定位函数
+## 文件定位函数
 
     rewind 反绕
     fseek 随机定位

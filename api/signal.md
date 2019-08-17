@@ -7,7 +7,7 @@
 - signal
 - sigaction
 
-#### 1. signal()
+### 1. signal()
 
 ```c
 #include <signal.h>

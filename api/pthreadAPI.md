@@ -74,12 +74,13 @@ int pthread_cond_signal(pthread_cond_t* cond);
 /* 生产者向消费者广播消息 */
 int pthread_cond_broadcast(pthread_cond_t* cond);
 ```
+
 - 消费者伪代码
 
 ```c
 pthread_mutex_lock(&mutex); // 拿到互斥锁，进入临界区
 while( 条件为假)
-	pthread_cond_wait(cond, mutex); // 令进程等待在条件变量上
+        pthread_cond_wait(cond, mutex); // 令进程等待在条件变量上
 修改条件
 pthread_mutex_unlock(&mutex); // 释放互斥锁
 ```
